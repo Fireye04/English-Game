@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IDialogueBox
 {
+    public void OnCollision();
     public void nextDialogue();
 
     public bool getActive();

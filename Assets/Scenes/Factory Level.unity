@@ -538,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 507846199}
   runSpeed: 0.5
+  frozen: 0
 --- !u!70 &507846201
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -15413,10 +15414,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dialogues:
-  - {fileID: 11400000, guid: d052806835771544da4d0089e13d97f1, type: 2}
+  - {fileID: 11400000, guid: e7a087b10bf40924ab78a3c0b71036fc, type: 2}
+  - {fileID: 11400000, guid: 1caf40928ca8386408163c80cf74ea04, type: 2}
   dialogueActive: 0
   complete: 0
+  Player: {fileID: 507846194}
   TextBox: {fileID: 58587488}
+  Character: {fileID: 1426907348}
+  Body: {fileID: 1008941814}
+  Continue: {fileID: 1907488803}
+  AudioSource: {fileID: 1844495138}
 --- !u!61 &1844495140
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15475,7 +15482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1907488804
 RectTransform:
   m_ObjectHideFlags: 0

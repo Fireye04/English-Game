@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
 
+    public bool frozen=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,18 +23,28 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+    {   
+        if (!frozen) {
+			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        if (Input.GetButtonDown("Jump")) {
-            jump = true;
+			if (Input.GetButtonDown("Jump")) {
+				jump = true;
+			}
+            
+		} else {
+            horizontalMove = 0;
+            jump = false;
         }
+        
     }
 
 	void FixedUpdate() {
-        controller.Move(horizontalMove, jump);
+		controller.Move(horizontalMove, jump);
         jump = false;
 	}
 
+    public void setFrozen(bool froz) {
+        frozen = froz;
+    }
 
 }
