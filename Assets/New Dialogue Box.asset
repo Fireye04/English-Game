@@ -16,7 +16,7 @@ MonoBehaviour:
   text: hi
   used: 0
   clip:
-    name: 
+    name: Metal Pipe
     clip: {fileID: 8300000, guid: c05309eddbe41c241b88c110fe0907b6, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 0.1
