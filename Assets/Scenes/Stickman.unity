@@ -313,7 +313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031330138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -739,6 +739,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   m_GroundCheck: {fileID: 1031330139}
+  m_Grounded: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -757,3 +758,4 @@ MonoBehaviour:
   controller: {fileID: 1915307365}
   runSpeed: 1
   frozen: 0
+  animator: {fileID: 1915307361}
