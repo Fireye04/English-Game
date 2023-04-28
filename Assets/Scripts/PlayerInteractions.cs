@@ -31,7 +31,7 @@ public class PlayerInteractions : MonoBehaviour
 				tempCollidable.OnCollision();
 				break;
 			}
-		}
 
+		}
 	}
 }
