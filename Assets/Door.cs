@@ -7,7 +7,17 @@ public class Door : MonoBehaviour, IInteractable, IDrawn {
 
     public Animator animator;
 
-    public void Interact() {
+	private bool interactable;
+
+	void Awake() {
+		interactable = true;
+	}
+
+	public bool CanInteract() {
+		return interactable;
+	}
+
+	public void Interact() {
         if (animator.GetBool("Opened")) {
             animator.SetBool("Opened", false);
         } else {

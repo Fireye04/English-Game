@@ -2,10 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
+
+	public GameObject prompt;
+
+	private IInteractable interactable;
+
+	private bool promptOn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +41,21 @@ public class PlayerInteractions : MonoBehaviour
 			}
 
 		}
+
+		foreach (var monoBehaviour in tempMonoArray) {
+			var tempCollidable = monoBehaviour as IInteractable;
+
+			if (tempCollidable != null && tempCollidable.CanInteract()) {
+				interactable = tempCollidable;
+				prompt.SetActive(true);
+				break;
+			}
+
+		}
 	}
+
+
+
+
+
 }
