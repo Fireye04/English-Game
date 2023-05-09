@@ -104,7 +104,14 @@ public class playerBox : MonoBehaviour {
                 interactedObject = other.gameObject;
                 */
 			}
+		} else if (interable.GetComponent<IDialogueBox>() != null) {
+			if (interable != null) {
+				var thing = interable.GetComponent<MonoBehaviour>() as IDialogueBox;
+					
+				thing.OnCollision();
+			}
 		}
+
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
