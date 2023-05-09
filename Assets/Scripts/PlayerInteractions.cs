@@ -45,7 +45,7 @@ public class PlayerInteractions : MonoBehaviour
 		foreach (var monoBehaviour in tempMonoArray) {
 			var tempCollidable = monoBehaviour as IInteractable;
 
-			if (tempCollidable != null && tempCollidable.CanInteract()) {
+			if (tempCollidable != null && tempCollidable.canInteract()) {
 				interactable = tempCollidable;
 				prompt.SetActive(true);
 				break;

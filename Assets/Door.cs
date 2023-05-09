@@ -13,7 +13,7 @@ public class Door : MonoBehaviour, IInteractable, IDrawn {
 		interactable = true;
 	}
 
-	public bool CanInteract() {
+	public bool canInteract() {
 		return interactable;
 	}
 
