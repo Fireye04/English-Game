@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using TMPro;
+using UnityEditor.Audio;
 
-public class barFall : MonoBehaviour
-{
-
-    public Animator anim;
-
+public class dialogue1 : MonoBehaviour {
+	//List of dialogues that will be chained together on this node.
 	public List<DialogueInfo> Dialogues = new List<DialogueInfo>();
 
 	public bool dialogueActive;
 	public bool complete;
-
-	public GameObject Player;
 
 	public GameObject TextBox;
 	public GameObject Character;
@@ -24,11 +22,12 @@ public class barFall : MonoBehaviour
 	public AudioSource AudioSource;
 	private bool audioInProgress;
 
+	public LevelLoaderScript LevelLoader;
+
 	private int i;
 
 	// Start is called before the first frame update
-	void Awake()
-    {
+	void Awake() {
 		if (Dialogues.Count == 0) {
 			complete = true;
 		} else {
@@ -36,9 +35,13 @@ public class barFall : MonoBehaviour
 		}
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
+
+	void Start() {
+		OnCollision();
+	}
+
+	// Update is called once per frame
+	void Update() {
 		if (dialogueActive) {
 			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) {
 				if (AudioSource.isPlaying) {
@@ -54,27 +57,21 @@ public class barFall : MonoBehaviour
 			}
 		}
 
+
+
 	}
 
+	public void OnCollision() {
 
-
-    private void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.name == "Player") {
-			if (complete) {
-				return;
-			}
-
-			TextBox.SetActive(true);
-			Player.GetComponent<PlayerMovement>().setFrozen(true);
-
-			applyText();
-
+		if (complete) {
+			return;
 		}
 
 
-		
+		TextBox.SetActive(true);
 
-    }
+		applyText();
+	}
 
 	public DialogueInfo getCurrentDialogue() {
 		return Dialogues[i];
@@ -90,8 +87,7 @@ public class barFall : MonoBehaviour
 			complete = true;
 			dialogueActive = false;
 			TextBox.SetActive(false);
-			Player.GetComponent<PlayerMovement>().setFrozen(false);
-			SceneManager.LoadSceneAsync("Dialogue");
+			LevelLoader.LoadNextLevel("Factory Level");
 		}
 	}
 
@@ -106,4 +102,19 @@ public class barFall : MonoBehaviour
 		audioInProgress = true;
 	}
 
+	public bool getActive() {
+		return dialogueActive;
+	}
+
+	public bool getComplete() {
+		return complete;
+	}
+
+	public void setActive(bool active) {
+		dialogueActive = active;
+	}
+
+	public void setComplete(bool completed) {
+		complete = completed;
+	}
 }

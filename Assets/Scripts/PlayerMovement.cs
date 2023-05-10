@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             jump = false;
         }
 
-        animator.SetInteger("Movement", ((int)horizontalMove));
+        animator.SetInteger("Movement", ((int)(horizontalMove * 100)));
         if (controller.m_Grounded && !jump) {
 			animator.SetBool("Jump", false);
 		}
