@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
-using UnityEditor.Audio;
 
 public class dialogue1 : MonoBehaviour {
 	//List of dialogues that will be chained together on this node.

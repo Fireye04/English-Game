@@ -259,6 +259,7 @@ MonoBehaviour:
   Continue: {fileID: 291435764}
   AudioSource: {fileID: 291248017}
   LevelLoader: {fileID: 757845775}
+  level: Stickman 1
 --- !u!4 &291248019
 Transform:
   m_ObjectHideFlags: 0

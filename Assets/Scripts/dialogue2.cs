@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
-using UnityEditor.Audio;
 
 public class dialogue2 : MonoBehaviour {
 	//List of dialogues that will be chained together on this node.
@@ -25,6 +24,8 @@ public class dialogue2 : MonoBehaviour {
 	public LevelLoaderScript LevelLoader;
 
 	private int i;
+
+	public string level;
 
 	// Start is called before the first frame update
 	void Awake() {
@@ -87,7 +88,7 @@ public class dialogue2 : MonoBehaviour {
 			complete = true;
 			dialogueActive = false;
 			TextBox.SetActive(false);
-			LevelLoader.LoadNextLevel("Stickman 1");
+			LevelLoader.LoadNextLevel(level);
 		}
 	}
 

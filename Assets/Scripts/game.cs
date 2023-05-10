@@ -12,6 +12,8 @@ public class game : MonoBehaviour
 
     [Space]
 
+    public GameObject dis;
+
     public GameObject scoree;
     public GameObject ending;
 
@@ -33,7 +35,7 @@ public class game : MonoBehaviour
         scoree.GetComponent<TextMeshProUGUI>().text = "Your score: " + score.ToString();
         if (score == 0) {
             ending.GetComponent<TextMeshProUGUI>().text = "You got the pacifist ending!";
-        } else if (0 < score && score < 10) {
+        } else if (0 < score && score < 60) {
 			ending.GetComponent<TextMeshProUGUI>().text = "You got the weakling ending!";
 		} else {
 			ending.GetComponent<TextMeshProUGUI>().text = "You got the stone-hooved killer ending!";
@@ -51,6 +53,6 @@ public class game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        dis.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();    
     }
 }

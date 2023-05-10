@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1239162420}
-  scene: Goat
+  scene: Dialogue 3
 --- !u!95 &1239162420
 Animator:
   serializedVersion: 5

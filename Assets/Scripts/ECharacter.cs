@@ -8,5 +8,7 @@ public enum ECharacter
     Jerry,
     Steve,
     Manager,
-    Bar
+    Metal_Bar,
+    Goat,
+    Crane_Operator
 }
