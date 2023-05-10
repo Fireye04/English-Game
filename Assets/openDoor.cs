@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class game : MonoBehaviour
+public class openDoor : MonoBehaviour
 {
-    public int score;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +15,11 @@ public class game : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D col) {
+        if (col.gameObject.name == "Player") {
+            SceneManager.LoadSceneAsync("Nooo");
+        }
     }
 }
