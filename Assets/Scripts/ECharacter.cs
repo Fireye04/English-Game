@@ -7,5 +7,6 @@ public enum ECharacter
     Narrator,
     Jerry,
     Steve,
-    Manager
+    Manager,
+    Bar
 }

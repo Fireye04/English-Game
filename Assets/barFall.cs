@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,15 +39,71 @@ public class barFall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+		if (dialogueActive) {
+			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) {
+				if (AudioSource.isPlaying) {
+					AudioSource.Stop();
+					audioInProgress = false;
+				}
+				nextDialogue();
+			}
+
+			if (!AudioSource.isPlaying && audioInProgress) {
+				Continue.SetActive(true);
+				audioInProgress = false;
+			}
+		}
+
+	}
+
+
 
     private void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.name == "Player") {
-            anim.SetTrigger("Fall");
-            
+		if (col.gameObject.name == "Player") {
+			if (complete) {
+				return;
+			}
 
-			SceneManager.LoadSceneAsync("Stickman 1");
+			TextBox.SetActive(true);
+			Player.GetComponent<PlayerMovement>().setFrozen(true);
+
+			applyText();
+
 		}
+
+
+		
+
     }
+
+	public DialogueInfo getCurrentDialogue() {
+		return Dialogues[i];
+	}
+
+	public void nextDialogue() {
+		if (i + 1 <= Dialogues.Count - 1) {
+			i++;
+			Continue.SetActive(false);
+			applyText();
+			//Todo, apply text and shit here
+		} else {
+			complete = true;
+			dialogueActive = false;
+			TextBox.SetActive(false);
+			Player.GetComponent<PlayerMovement>().setFrozen(false);
+			SceneManager.LoadSceneAsync("Dialogue");
+		}
+	}
+
+	public void applyText() {
+		Character.GetComponent<TextMeshProUGUI>().text = getCurrentDialogue().Character.ToString();
+		Body.GetComponent<TextMeshProUGUI>().text = getCurrentDialogue().text;
+
+		dialogueActive = true;
+
+		AudioSource.clip = getCurrentDialogue().clip.clip;
+		AudioSource.Play();
+		audioInProgress = true;
+	}
+
 }
